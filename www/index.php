@@ -11,7 +11,7 @@
 
 
 	<h1>Sign-up</h1>
-	<form action="controller/login/signup.php" method="POST">
+	<form action="../WEB-INF/controller/login/signup.php" method="POST">
 		First Name: <input type="text" name="fName"/> <br>
 		Last Name: <input type="text" name="lName"/>  <br>
 		E-mail:	<input type="text" name="email"/><br>
