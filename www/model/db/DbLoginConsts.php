@@ -2,7 +2,8 @@
 	//Login Information for the PDO
 	class DbLoginConsts{
 		public $loginInfo;
-
+		
+		//On Initilization, We Parse the XML file into an Object.
 		function __construct(){
 			$this->loginInfo=simplexml_load_file("../../../WEB-INF/configs/mysql.xml");
 		}

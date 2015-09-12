@@ -8,12 +8,15 @@
 		private $userInfo;
 		private $dbConnection;
 
+		// On init, we recieve a UserInfo Object and store it.
+		// Next we retrieve a PDO Connection from DbService().getDbConnection.
 		function __construct($userInfo){
 			$this->userInfo=$userInfo;
 			$dbService=new DbService();
 			$this->dbConnection=$dbService->getDbConnection();
 		}
 
+		// We try to store the new user in the database,
 		public function register(){
 			try{
 				$this->execute();
