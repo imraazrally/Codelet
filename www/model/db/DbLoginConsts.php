@@ -1,7 +1,24 @@
 <?php
+	//Login Information for the PDO
 	class DbLoginConsts{
-		public static $url="mysql:host=localhost;dbname=codelet;charset=utf8";
-		public static $username="root";
-		public static $password="1234";
+		public $loginInfo;
+
+		function __construct(){
+			$this->loginInfo=simplexml_load_file("../../configs/mysql.xml");
+		}
+
+		public function getUrl(){
+			return $this->loginInfo->url;
+		}
+
+		public function getUsername(){
+			return $this->loginInfo->username;
+		}
+
+		public function getPassword(){
+			return $this->loginInfo->password;
+		}
+
 	}
+
 ?>

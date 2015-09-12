@@ -1,4 +1,7 @@
 <?php
+	//please ignore the code quality in this file. Just for a demo exmaple to show how to insert a student.
+	// Sample sign up controller; 
+	// please be sure to handle exceptions
 	require_once ("../../model/login/SignUpService.php");
 	
 	$fName=$_POST['fName'];
@@ -10,6 +13,7 @@
 
 	$userInfo=new UserInfo($fName, $lName, $email, $phone, $username, $password, date("Y-m-d H:i:s"));
 	$signupservice=new SignUpService($userInfo);
+	
 	$signupservice->register();
 
 

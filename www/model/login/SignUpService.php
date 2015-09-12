@@ -1,12 +1,12 @@
 <?php
 	require_once("UserInfo.php");
 	require_once("../../model/db/DbService.php");
-	include("../../model/login/LoginConsts.php");
+	include("../../model/login/Roles.php");
+	include("../../model/login/Hashing.php");
 
 	class SignUpService{
 		private $userInfo;
 		private $dbConnection;
-		public $exceptionMessage;
 
 		function __construct($userInfo){
 			$this->userInfo=$userInfo;
@@ -25,8 +25,9 @@
 
 
 		private function execute(){
-				$statement=$this->dbConnection->prepare("INSERT INTO users (username,password,f_name, l_name, email, phone, reg_time, role) 
-												   VALUES (:username, :password, :f_name, :l_name, :email, :phone, :reg_time, :role)");
+				$SQL="INSERT INTO users (username,password,f_name, l_name, email, phone, reg_time, role) 
+							 VALUES (:username, :password, :f_name, :l_name, :email, :phone, :reg_time, :role)";
+				$statement=$this->dbConnection->prepare($SQL);
 				$statement->bindParam(":username", $this->userInfo->getUsername());
 				$statement->bindParam(":password", $this->getHashedPassword());
 				$statement->bindParam(":f_name",   $this->userInfo->getFName());
@@ -34,16 +35,13 @@
 				$statement->bindParam(":email" ,   $this->userInfo->getEmail());
 				$statement->bindParam(":phone",    $this->userInfo->getPhone());
 				$statement->bindParam(":reg_time", $this->userInfo->getRegTime());
-				$statement->bindParam(":role", LoginConsts::$STUDENT);
+				$statement->bindParam(":role", Roles::$STUDENT);
 				$statement->execute();
 		}
 
 		private function getHashedPassword(){
-			return password_hash($this->userInfo->getUsername().   $this->userInfo->getRegTime().   $this->userInfo->getPassword(), PASSWORD_DEFAULT);
-		}
-
-		private function getExceptionMessage(){
-			return $this->exceptionMessage;
+			$hashing=new Hashing();
+			return $hashing->getHashedPassword($this->userInfo);
 		}
 
 	}

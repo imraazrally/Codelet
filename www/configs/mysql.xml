@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<dbLoginConsts>
+	<url>mysql:host=localhost;dbname=codelet;charset=utf8</url>
+	<username>root</username>
+	<password>1234</password>
+</dbLoginConsts>
