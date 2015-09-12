@@ -4,7 +4,7 @@
 		public $loginInfo;
 
 		function __construct(){
-			$this->loginInfo=simplexml_load_file("../../configs/mysql.xml");
+			$this->loginInfo=simplexml_load_file("../../../WEB-INF/configs/mysql.xml");
 		}
 
 		public function getUrl(){
