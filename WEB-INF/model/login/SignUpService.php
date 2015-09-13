@@ -10,10 +10,11 @@
 
 		// On init, we recieve a UserInfo Object and store it.
 		// Next we retrieve a PDO Connection from DbService().getDbConnection.
-		function __construct($dbService){$this->dbConnection=$dbService->getDbConnection();}
+		function __construct(DbService $dbService){$this->dbConnection=$dbService->getDbConnection();}
 
-		// We try to store the new user in the database,
-		public function register($userInfo){
+		// We try to store the new user in the database, 
+		// Throws PDO Exception
+		public function register(UserInfo $userInfo){
 			$this->userInfo=$userInfo;
 			try{
 				$this->execute();
@@ -38,8 +39,12 @@
 		}
 
 		// Salt & Hash
-		private function getHashedPassword($hashing){			
-			return $hashing->getHashedPassword($this->userInfo);
+		private function getHashedPassword(){			
+			return Hashing::getHashedPassword(
+									$this->userInfo->getUsername(), 
+									$this->userInfo->getPassword(),
+									$this->userInfo->getRegTime()
+							);
 		}
 
 	}
