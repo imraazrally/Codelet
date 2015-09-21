@@ -1,0 +1,112 @@
+body{
+	background-image: url("home.jpeg");
+	background-color: white;
+}
+
+#titleBar{
+	top:0;
+	left:0;
+	position: fixed;
+	width:100%;
+	height:80px;
+	background-color: #242323;
+	color:white;
+	font-family: 'Source Code Pro', ;
+}
+
+#results{
+	font-family: 'Source Code Pro', ;
+	margin-left:60px;
+	font-size: 20px;
+	margin-top:20px;
+}
+
+#titleBar:hover{
+	opacity: 1;
+}
+
+.content{
+	margin-left:10px;
+	margin-top:5px;
+}
+
+#login{
+	height:300px;
+	width:600px;
+	margin-left:600px;
+	margin-top:300px;
+	border-radius: 15px;
+	opacity: 1;
+	color:white;
+	background-color: #575757;
+}
+
+#footnote{
+	height:300px;
+	width:600px;
+	margin-left:600px;
+	margin-top:5px;
+	border-radius: 15px;
+	color:#7A7979;
+}
+
+#loginTitle{
+	font-size:40px;
+	width:600px;
+	height:50px;
+	background-color: #363636;
+	border-radius: 3px;
+	font-family: 'Source Code Pro', ;
+	font-size: 35px;
+
+}
+
+#loginInfo{
+	font-family: 'Source Code Pro', ;
+	font-size: 30px;
+	margin-left: 90px;
+}
+
+.userInfoInputBox{
+	width:220px;
+	height: 30px;
+	border:none;
+	border-radius: 10px;
+	background-color: #ACAFB0;
+	font-size: 17px;
+	font-family: 'Source Code Pro', ;
+}
+
+.userInfoInputBox:hover{
+	background-color: white;
+}
+
+
+
+.loginBtnStyle{
+	background-color: #EBCA83;
+	width:100px;
+	height:30px;
+	margin-top:20px;
+	margin-left:380px;
+	border-radius: 5px;
+	font-family: 'Source Code Pro', ;
+	font-size: 20px;
+	padding-left: 14px;
+	padding-right: 7px;
+	color:black;
+	border:1px solid grey;
+	cursor: pointer;
+
+}
+
+#loginBtn:hover{
+	background-color: #537A96;
+	color:white;
+	-webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -ms-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+
+}
