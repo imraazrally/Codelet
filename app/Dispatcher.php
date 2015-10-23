@@ -3,19 +3,20 @@
 	class Dispatcher{
 		public static function dispatch($type, $message){
 			$dispatcher=curl_init(CONTROLLER_ROUTER_URL);
-			curl_setopt($dispatcher, CURLOPT_FOLLOWLOCATION,true);
+			curl_setopt($dispatcher, CURLOPT_FOLLOWLOCATION,false);
 			curl_setopt($dispatcher, CURLOPT_POSTREDIR, 3);
 			curl_setopt($dispatcher, CURLOPT_CUSTOMREQUEST, "POST"); 
 
 			$options=array(
 				CURLOPT_POST=>true,
 				CURLOPT_POSTFIELDS=>array($type=>$message),
-				CURLOPT_RETURNTRANSFER, false
+				CURLOPT_RETURNTRANSFER, true
 			);
 			
 			curl_setopt_array($dispatcher, $options);
-			curl_exec($dispatcher);
+			$result=curl_exec($dispatcher);
 			curl_close($dispatcher);
+			return $result;
 		}
 
 		public static function forward($url){

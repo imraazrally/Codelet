@@ -22,21 +22,32 @@
 	$response['username']=$request->username;
 	$response['password']=$request->password;
 	
+	session_start();
+
 	switch($verify){
 		case LoginService::$USER_NOT_FOUND:
 					$response['error']='USER_NOT_FOUND';
+					$_SESSION['username']="";
 					break;
 		case LoginService::$PASSWORD_MISMATCH:
 					$response['error']= "PASSWORD_MISMATCH";
+					$_SESSION['username']="";
 					break;
 		case "Teacher":
-					$response['permission']="Teacher";
+					$response['role']="Teacher";
+					$response['username']=$request->username;
+					$_SESSION['role']="Teacher";
+					$_SESSION['username']=$request->username;
 					break;
 		case "Student":
-					$response['permission']="Student";
+					$response['role']="Student";
+					$response['username']=$request->username;
+					$_SESSION['role']="Student";
+					$_SESSION['username']=$request->username;
 					break;
 		default:
 					$response['error']="UNKNOWN_ERROR";
+					$_SESSION['username']="";
 					break;
 	};
 
